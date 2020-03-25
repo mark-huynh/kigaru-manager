@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import MaterialTable from 'material-table';
 
 class Table extends React.Component {
@@ -15,11 +15,10 @@ class Table extends React.Component {
       .then(data => {
           console.log(data);
         this.setState({
-            data: data
+            data: data.main_dishes
         });
       },
       err => console.log("err" + err));
-      
   }
 
   render() {
