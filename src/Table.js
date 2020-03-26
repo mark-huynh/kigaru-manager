@@ -1,77 +1,70 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Table extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: props.items
     };
   }
 
-  componentDidMount() {
-    fetch("https://xbarlxdua2.execute-api.us-east-1.amazonaws.com/items")
-      .then(response => response.json())
-      .then(data => {
-          console.log(data);
-        this.setState({
-            data: data.main_dishes
-        });
-      },
-      err => console.log("err" + err));
-  }
-
   render() {
-    let allTables = this.state.data.map(item => (
+    let allTables = this.props.items ? this.props.items.map(item => (
       <MaterialTable
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
               setTimeout(() => {
+                newData.collection = this.props.label;
+                newData.groupName = item.name;
+                this.props.onCreate(newData);
                 resolve();
-                this.setState(prevState => {
-                  const data = [...prevState.data];
-                  data.push(newData);
-                  return { ...prevState, data };
-                });
               }, 600);
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
               setTimeout(() => {
+                oldData.collection = this.props.label;
+                oldData.groupName = item.name;
+                this.props.onUpdate(oldData, newData);
                 resolve();
-                if (oldData) {
-                  this.setState(prevState => {
-                    let toChange = [...prevState.data];
-                    let allMeals = toChange[toChange.indexOf(item)].meals;
-                    let modifiedIndex = oldData.tableData.id;
+                // if (oldData) {
+                //   this.setState(prevState => {
+                //     let toChange = [...prevState.data];
+                //     let allMeals = toChange[toChange.indexOf(item)].meals;
+                //     let modifiedIndex = oldData.tableData.id;
 
-                    console.log(modifiedIndex);
-                    toChange[toChange.indexOf(item)].meals[
-                      modifiedIndex
-                    ] = newData;
+                //     console.log(modifiedIndex);
+                //     toChange[toChange.indexOf(item)].meals[
+                //       modifiedIndex
+                //     ] = newData;
 
-                    console.log(toChange);
-                    return { ...prevState, toChange };
-                  });
-                }
+                //     console.log(toChange);
+                //     return { ...prevState, toChange };
+                  // });
+                // }
               }, 600);
             }),
           onRowDelete: oldData =>
             new Promise(resolve => {
               setTimeout(() => {
+                oldData.collection = this.props.label;
+                oldData.groupName = item.name;
+                this.props.onDelete(oldData);
                 resolve();
-                this.setState(prevState => {
-                  const data = [...prevState.data];
-                  data.splice(data.indexOf(oldData), 1);
-                  return { ...prevState, data };
-                });
+                // this.setState(prevState => {
+                //   const data = [...prevState.data];
+                //   data.splice(data.indexOf(oldData), 1);
+                //   return { ...prevState, data };
+                // });
               }, 600);
             })
         }}
         columns={[
           { title: "Name", field: "name" },
-          { title: "Price", field: "price", type: "numeric" },
+          { title: "Price", field: "price"},
           { title: "Description", field: "description" },
           {
             title: "Picture",
@@ -81,11 +74,12 @@ class Table extends React.Component {
         data={item.meals.map(food => ({
           name: food.name,
           description: food.description,
-          picture: food.picture
+          picture: food.picture,
+          price: food.price
         }))}
         title={item.name}
       />
-    ));
+    )) : <CircularProgress/>;
 
     return <div style={{ maxWidth: "100%" }}>{allTables}</div>;
   }
