@@ -20,14 +20,14 @@ class MenuSection extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://xbarlxdua2.execute-api.us-east-1.amazonaws.com/items")
+        fetch("https://8qqznzyrgh.execute-api.us-east-1.amazonaws.com/develop/menuitems")
         .then(response => response.json())
         .then(data => {
           this.setState({
               allData: data
           });
         },
-        err => console.err("err:" + err));
+        err => console.log("err:" + err));
         // this.setState({allData: {"main_dishes":[{"_id":"5e793c07b1f5d234fc1c6f30","name":"Combos","meals":[{"name":"Bento Box","price":8,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]},{"_id":"5e793c07b1f5d234fc1c6f31","name":"Japanese Curry","meals":[{"name":"Beef Curry","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null},{"name":"Fried Shrimp Curry","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]}],"drinks":[{"_id":"5e7afd37cdaf982014bea85e","name":"Nigiri","meals":[{"name":"*Squid","price":2,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]},{"_id":"5e7afd37cdaf982014bea85f","name":"Specials","meals":[{"name":"Bluefin Tuna Toro (1pc)","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null},{"name":"Negitoro (2pc)","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]}],"sushi":[{"_id":"5e7afce6d792fb47a442e3df","name":"Nigiri","meals":[{"name":"*Squid","price":2,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]},{"_id":"5e7afce6d792fb47a442e3e0","name":"Specials","meals":[{"name":"Bluefin Tuna Toro (1pc)","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null},{"name":"Negitoro (2pc)","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]}],"appetizers":[{"_id":"5e7afd2eb082ab2c5495dd7b","name":"Nigiri","meals":[{"name":"*Squid","price":2,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]},{"_id":"5e7afd2eb082ab2c5495dd7c","name":"Specials","meals":[{"name":"Bluefin Tuna Toro (1pc)","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null},{"name":"Negitoro (2pc)","price":9,"description":"Includes: Salmon Skin Roll, Karage (3pc), Edamame, Sesame Balls","picture":null}]}]}});
     }
 
@@ -48,7 +48,7 @@ class MenuSection extends React.Component {
             })
         };
 
-        fetch('https://xbarlxdua2.execute-api.us-east-1.amazonaws.com/items', requestOptions)
+        fetch("https://8qqznzyrgh.execute-api.us-east-1.amazonaws.com/develop/menuitems", requestOptions)
         .then(response => response.json())
         .then(data => console.log(data));
         console.log(insert);
@@ -65,6 +65,14 @@ class MenuSection extends React.Component {
         picture: oldData.picture
       }
 
+      //To swap misordered values due to library making it alphabetical order
+      let newData2 = {
+        name: newData.name,
+        price: newData.price,
+        description: newData.description,
+        picture: newData.picture
+      }
+
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -72,15 +80,15 @@ class MenuSection extends React.Component {
               operation: "update",
               collection: collection,
               groupName: groupName,
-              item: newData,
+              item: newData2,
               old: itemCopy
           })
       };
-      fetch('https://xbarlxdua2.execute-api.us-east-1.amazonaws.com/items', requestOptions)
+      fetch("https://8qqznzyrgh.execute-api.us-east-1.amazonaws.com/develop/menuitems", requestOptions)
       .then(response => response.json())
       .then(data => console.log(data));
 
-        console.log(oldData, newData);
+        console.log(itemCopy, newData2);
     }
 
     // Not working with already placed data that has "integers", update values to make everything strings
@@ -105,7 +113,7 @@ class MenuSection extends React.Component {
               item: itemCopy
           })
       };
-      fetch('https://xbarlxdua2.execute-api.us-east-1.amazonaws.com/items', requestOptions)
+      fetch("https://8qqznzyrgh.execute-api.us-east-1.amazonaws.com/develop/menuitems", requestOptions)
       .then(response => response.json())
       .then(data => console.log(data));
         console.log(oldData);
