@@ -68,7 +68,7 @@ class MenuSection extends React.Component {
         picture: oldData.picture
       }
 
-      //To swap misordered values due to library making it alphabetical order
+      //To swap misordered values due to table library making it alphabetical order
       let newData2 = {
         name: newData.name,
         price: newData.price,
@@ -92,7 +92,6 @@ class MenuSection extends React.Component {
       .then(this.refetchData);
     }
 
-    // Not working with already placed data that has "integers", update values to make everything strings
     handleDeleteData(oldData) {
       this.setState({isLoading: true});
 
@@ -140,8 +139,10 @@ class MenuSection extends React.Component {
               <li>Delete a row by clicking <DeleteOutlineIcon/> and confirming</li>
             </ol>
             <div style={{padding: "10px"}}>
-            Each of these tables allow you to seach by any of the fields (name, price, description) and also allow you to expand the number of rows displayed. Contact mark.huynh.oregon@gmail.com for any issues.
+            Each of these tables allow you to seach by any of the fields (name, price, description) and also allow you to expand the number of rows displayed. Also works on mobile. Contact mark.huynh.oregon@gmail.com for any issues.
             </div>
+
+            
             <div style={{textAlign: "center"}}><h1>Sushi</h1></div>
             <Table
               label={"Sushi"}
