@@ -13,7 +13,8 @@ class Table extends React.Component {
   render() {
     let allTables = this.props.items ? this.props.items.map(item => (
       <MaterialTable
-        editable={{
+        isLoading={this.props.isLoading}
+        editable={ this.props.isAuth ? {
           onRowAdd: newData =>
             new Promise(resolve => {
               setTimeout(() => {
@@ -21,7 +22,7 @@ class Table extends React.Component {
                 newData.groupName = item.name;
                 this.props.onCreate(newData);
                 resolve();
-              }, 600);
+              }, 1000);
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
@@ -30,22 +31,7 @@ class Table extends React.Component {
                 oldData.groupName = item.name;
                 this.props.onUpdate(oldData, newData);
                 resolve();
-                // if (oldData) {
-                //   this.setState(prevState => {
-                //     let toChange = [...prevState.data];
-                //     let allMeals = toChange[toChange.indexOf(item)].meals;
-                //     let modifiedIndex = oldData.tableData.id;
-
-                //     console.log(modifiedIndex);
-                //     toChange[toChange.indexOf(item)].meals[
-                //       modifiedIndex
-                //     ] = newData;
-
-                //     console.log(toChange);
-                //     return { ...prevState, toChange };
-                  // });
-                // }
-              }, 600);
+              }, 1000);
             }),
           onRowDelete: oldData =>
             new Promise(resolve => {
@@ -54,14 +40,10 @@ class Table extends React.Component {
                 oldData.groupName = item.name;
                 this.props.onDelete(oldData);
                 resolve();
-                // this.setState(prevState => {
-                //   const data = [...prevState.data];
-                //   data.splice(data.indexOf(oldData), 1);
-                //   return { ...prevState, data };
-                // });
-              }, 600);
+
+              }, 1000);
             })
-        }}
+        } : {}}
         columns={[
           { title: "Name", field: "name" },
           { title: "Price", field: "price"},

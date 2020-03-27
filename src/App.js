@@ -41,7 +41,8 @@ function App() {
 
   function onLoad() {
     Auth.currentSession()
-      .then(data => console.log(data))
+      // .then(data => console.log(data))
+      .then(data => setKey(data.idToken.jwtToken))
       .then(userHasAuthenticated(true))
       .catch(e => {
         console.log(e);
@@ -79,7 +80,7 @@ function App() {
           </form>
         </div>
       )}
-      <MenuSection />
+      <MenuSection authKey={authKey} isAuth={isAuthenticated}/>
     </div>
   );
 }
