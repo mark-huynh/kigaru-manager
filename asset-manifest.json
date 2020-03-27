@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/kigaru-manager/static/css/main.5f361e03.chunk.css",
+    "main.js": "/kigaru-manager/static/js/main.cebe6d1d.chunk.js",
+    "main.js.map": "/kigaru-manager/static/js/main.cebe6d1d.chunk.js.map",
+    "runtime-main.js": "/kigaru-manager/static/js/runtime-main.58367e28.js",
+    "runtime-main.js.map": "/kigaru-manager/static/js/runtime-main.58367e28.js.map",
+    "static/js/2.3818f6a6.chunk.js": "/kigaru-manager/static/js/2.3818f6a6.chunk.js",
+    "static/js/2.3818f6a6.chunk.js.map": "/kigaru-manager/static/js/2.3818f6a6.chunk.js.map",
+    "index.html": "/kigaru-manager/index.html",
+    "precache-manifest.68369d4a6445503910ffbb6ee565979a.js": "/kigaru-manager/precache-manifest.68369d4a6445503910ffbb6ee565979a.js",
+    "service-worker.js": "/kigaru-manager/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/kigaru-manager/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.3818f6a6.chunk.js.LICENSE.txt": "/kigaru-manager/static/js/2.3818f6a6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.58367e28.js",
+    "static/js/2.3818f6a6.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.cebe6d1d.chunk.js"
+  ]
+}
