@@ -6,3 +6,15 @@ The Kigaru management application was created to allow for management of the Kig
 
 ## Intergration Summary
 Using REST AWS API endpoints that I have developed, along with AWS Cognito for authorization for those endpoints, authorized users may modify data that is dynamically fetched on the Kigaru website. The data currently lies in a MongoDB database, where AWS Lambda functions perform the CRUD (Create, Read, Update, Delete) operations. 
+
+Users that are registered with AWS Cognito are able to perform modifications to the MongoDB database via POST requests. Upon login, Cognito will provide a authorization that becomes attached to request headers. This authorization is not necessary to perform GET requests from the same endpoint. Here is the architecture:
+
+![3d_AWS](./images/Kigaru_Architecture.png)
+
+## Performing changes
+
+After logging in, the UI will change to allow for changes to be made. Any changes automatically become submitted and new data becomes fetched in the background. Instructions are labeled at the top of the page and an example of editing a row looks like this:
+
+![editing](./images/Editing.png)
+
+**Updated March 2020**
