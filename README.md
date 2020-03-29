@@ -17,6 +17,7 @@ In the past, all the data on the website was completely static and any changes t
 
 
 Old application:
+
 ![Old Manager](./images/oldmanagerIcon.png)
 
 Drawbacks to old:
