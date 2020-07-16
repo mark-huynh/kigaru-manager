@@ -1,4 +1,4 @@
-This web application is published at kigaru-sushi.com/manager (using a reference) and was developed as a replacement for previous [management application](https://github.com/mark-huynh/kigaruwebmanager) which is now deprecated.
+This web application is published at kigaru-sushi.com/manager (https://mark-huynh.github.io/kigaru-manager/)(using a reference) and was developed as a replacement for previous [management application](https://github.com/mark-huynh/kigaruwebmanager) which is now deprecated.
 
 
 ## Introduction
