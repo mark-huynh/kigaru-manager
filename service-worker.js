@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kigaru-manager/precache-manifest.68369d4a6445503910ffbb6ee565979a.js"
+  "/kigaru-manager/precache-manifest.1081b33e77c29120b119c0384b396f85.js"
 );
 
 self.addEventListener('message', (event) => {
